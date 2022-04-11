@@ -1,6 +1,11 @@
 {
 "env":
     {
-        "url" : "https://demo.opencart.com/"
+        "url" : "https://demo.opencart.com/"        
+    },
+    "projectId": "8dwdf6",
+    "reporter" : "mochawesome",
+    "retries": {
+        "runMode": 1
     }
 }

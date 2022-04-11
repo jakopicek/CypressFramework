@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 import LayoutPage from '../../support/objectsMap/LayoutPage'
 import ProductDetailsPage from '../../support/objectsMap/ProductDetailsPage'
+import SearchResultsPage from '../../support/objectsMap/SearchResultsPage'
 
 describe('Products test suite', function()
 {    
@@ -86,7 +87,7 @@ describe('Products test suite', function()
         cy.selectProduct(this.product)
 
         productDetailsPage.getProductName().should('have.text', 'MacBook')
-        productDetailsPage.getProductPrice().should('have.text', '$500.00')
+        productDetailsPage.getProductPrice().should('have.text', '$602.00')
 
     })
 
@@ -110,7 +111,7 @@ describe('Products test suite', function()
         
     })
 
-    it('TC_012_Add_Product_Unauthorized', function()
+    it('TC_014_Add_Product_View_Unauthorized', function()
     {        
         const layoutPage = new LayoutPage()
         const productDetailsPage = new ProductDetailsPage()
@@ -124,15 +125,15 @@ describe('Products test suite', function()
         cy.selectProduct(this.product)
 
         productDetailsPage.getProductName().should('have.text', 'MacBook')
-        productDetailsPage.getProductPrice().should('have.text', '$500.00')
+        productDetailsPage.getProductPrice().should('have.text', '$602.00')
 
-        productDetailsPage.getAddToCartButton().should('not.be.visible').click()
+        productDetailsPage.getAddToCartButton().should('be.visible').click()
 
 
         productDetailsPage.getSuccessMessage().should('be.visible').contains('Success')
     })
 
-    it('TC_013_Add_Product_Authorized', function()
+    it('TC_015_Add_Product_View_Authorized', function()
     {
         const layoutPage = new LayoutPage()
         const productDetailsPage = new ProductDetailsPage()
@@ -150,8 +151,45 @@ describe('Products test suite', function()
         productDetailsPage.getProductName().should('have.text', 'MacBook')
         productDetailsPage.getProductPrice().should('have.text', '$500.00')
         
-        productDetailsPage.getAddToCartButton().should('not.be.visible').click()
+        productDetailsPage.getAddToCartButton().should('be.visible').click()
 
         productDetailsPage.getSuccessMessage().should('be.visible').contains('Success')
     })
+
+    it('TC_016_Add_Product_Search_Unauthorized', function()
+    {        
+        const layoutPage = new LayoutPage()
+        const productDetailsPage = new ProductDetailsPage()
+        const searchResultsPage = new SearchResultsPage()
+        cy.visit(Cypress.env('url'))
+        layoutPage.getSearchTextbox().should('be.visible').type(this.product).should('have.value', this.product)
+        layoutPage.getSearchButton().should('be.visible').click()
+
+        cy.url().should('include', 'product/search&search=' + this.product)
+
+        cy.addProductToCartFromSearchResults(this.product)
+
+        searchResultsPage.getSuccessMessage().should('be.visible').contains('Success')
+
+    })
+
+    it('TC_017_Add_Product_Search_Authorized', function()
+    {
+        const layoutPage = new LayoutPage()
+        const productDetailsPage = new ProductDetailsPage()
+        const searchResultsPage = new SearchResultsPage()
+
+        cy.visit(Cypress.env('url'))
+        cy.login(this.emailAddress, this.password)
+
+        layoutPage.getSearchTextbox().should('be.visible').type(this.product).should('have.value', this.product)
+        layoutPage.getSearchButton().should('be.visible').click()
+
+        cy.url().should('include', 'product/search&search=' + this.product)
+               
+        cy.addProductToCartFromSearchResults(this.product)
+
+        searchResultsPage.getSuccessMessage().should('be.visible').contains('Success')
+    })
+   
 })

@@ -16,6 +16,10 @@ class LayoutPage
     {
         return cy.get('div#search button')
     }  
+    getCheckoutLink()
+    {
+        return cy.get('a[title="Checkout"]')
+    }
 }
 
 export default LayoutPage;

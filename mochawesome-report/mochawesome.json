@@ -1,0 +1,176 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-04-11T01:44:00.803Z",
+    "end": "2022-04-11T01:44:38.119Z",
+    "duration": 37316,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "637eb5aa-ef51-4b06-9da1-6a4adf5ac657",
+      "title": "",
+      "fullFile": "cypress/integration/TestBook/RegisterTestSuite.js",
+      "file": "cypress/integration/TestBook/RegisterTestSuite.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "386ddd6c-29d7-4788-ab3c-afefd8f9c0de",
+          "title": "Register test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC_001_MyAccount_dropdown_RegisterAccount",
+              "fullTitle": "Register test suite TC_001_MyAccount_dropdown_RegisterAccount",
+              "timedOut": null,
+              "duration": 13460,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const layoutPage = new _LayoutPage.default();\nconst homePage = new _HomePage.default();\nconst registerPage = new _RegisterPage.default();\nconst successPage = new _SuccessPage.default();\ncy.visit(Cypress.env('url'));\ncy.url().should('include', Cypress.env('url'));\nlayoutPage.getMyAccoutDropdown().should('be.visible').click();\nhomePage.getRegisterOption().should('be.visible').click();\ncy.url().should('include', 'route=account/register');\nregisterPage.getFirstNameTextBox().should('be.visible').type(this.accountData.firstName).should('have.value', this.accountData.firstName);\nregisterPage.getLastNameTextBox().should('be.visible').type(this.accountData.lastName).should('have.value', this.accountData.lastName);\nconst getUniqueId = () => Cypress._.uniqueId(Date.now().toString());\nconst emailAddress = this.accountData.firstName + '.' + this.accountData.lastName + getUniqueId() + '@gmail.com';\nregisterPage.getEmailTextBox().should('be.visible').type(emailAddress).should('have.value', emailAddress);\nregisterPage.getTelephoneTextBox().should('be.visible').type(this.accountData.telephone).should('have.value', this.accountData.telephone);\nregisterPage.getPasswordTextBox().should('be.visible').type(this.accountData.password).should('have.value', this.accountData.password);\nregisterPage.getConfirmTextBox().should('be.visible').type(this.accountData.password).should('have.value', this.accountData.password);\nregisterPage.getPolicyCheckbox().should('be.visible').check().should('be.checked');\nregisterPage.getContinueButton().should('be.visible').click();\ncy.url().should('include', 'route=account/success');\nsuccessPage.getMessage().should('have.text', 'Your Account Has Been Created!');",
+              "err": {},
+              "uuid": "f17fbfb6-8b85-4226-8416-7339e7d81460",
+              "parentUUID": "386ddd6c-29d7-4788-ab3c-afefd8f9c0de",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_002_MyAccount_dropdown_Login_NewCustomer",
+              "fullTitle": "Register test suite TC_002_MyAccount_dropdown_Login_NewCustomer",
+              "timedOut": null,
+              "duration": 5375,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const layoutPage = new _LayoutPage.default();\nconst loginPage = new _LoginPage.default();\nconst homePage = new _HomePage.default();\ncy.visit(Cypress.env('url'));\ncy.url().should('include', Cypress.env('url'));\nlayoutPage.getMyAccoutDropdown().should('be.visible').click();\nhomePage.getLoginOption().should('be.visible').click();\ncy.url().should('include', 'route=account/login');\nloginPage.getContinueButton().should('be.visible').click();\ncy.url().should('include', 'route=account/register');",
+              "err": {},
+              "uuid": "db41c9ca-16dc-4c6c-8b28-1a11295832b5",
+              "parentUUID": "386ddd6c-29d7-4788-ab3c-afefd8f9c0de",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_003_MyAccount_dropdown_Login_Register_link",
+              "fullTitle": "Register test suite TC_003_MyAccount_dropdown_Login_Register_link",
+              "timedOut": null,
+              "duration": 5141,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const layoutPage = new _LayoutPage.default();\nconst loginPage = new _LoginPage.default();\nconst homePage = new _HomePage.default();\ncy.visit(Cypress.env('url'));\ncy.url().should('include', Cypress.env('url'));\nlayoutPage.getMyAccoutDropdown().should('be.visible').click();\nhomePage.getLoginOption().should('be.visible').click();\ncy.url().should('include', 'route=account/login');\nloginPage.getRegisterLink().should('be.visible').click();\ncy.url().should('include', 'route=account/register');",
+              "err": {},
+              "uuid": "856fa274-8388-4d1a-84d6-61ddcd56b2dd",
+              "parentUUID": "386ddd6c-29d7-4788-ab3c-afefd8f9c0de",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_004_MyAccount_link_NewCustomer",
+              "fullTitle": "Register test suite TC_004_MyAccount_link_NewCustomer",
+              "timedOut": null,
+              "duration": 5026,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const layoutPage = new _LayoutPage.default();\nconst loginPage = new _LoginPage.default();\ncy.visit(Cypress.env('url'));\ncy.url().should('include', Cypress.env('url'));\nlayoutPage.getMyAccoutLink().should('be.visible').click();\ncy.url().should('include', 'route=account/login');\nloginPage.getContinueButton().should('be.visible').click();\ncy.url().should('include', 'route=account/register');",
+              "err": {},
+              "uuid": "15bd696c-7a8e-4686-8091-a37372ee276d",
+              "parentUUID": "386ddd6c-29d7-4788-ab3c-afefd8f9c0de",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_005_MyAccount_link_Register_link",
+              "fullTitle": "Register test suite TC_005_MyAccount_link_Register_link",
+              "timedOut": null,
+              "duration": 4444,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const layoutPage = new _LayoutPage.default();\nconst loginPage = new _LoginPage.default();\ncy.visit(Cypress.env('url'));\ncy.url().should('include', Cypress.env('url'));\nlayoutPage.getMyAccoutLink().should('be.visible').click();\ncy.url().should('include', 'route=account/login');\nloginPage.getRegisterLink().should('be.visible').click();\ncy.url().should('include', 'route=account/register');",
+              "err": {},
+              "uuid": "9b6d0b97-f24d-4a33-9214-0d6f99a7da46",
+              "parentUUID": "386ddd6c-29d7-4788-ab3c-afefd8f9c0de",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f17fbfb6-8b85-4226-8416-7339e7d81460",
+            "db41c9ca-16dc-4c6c-8b28-1a11295832b5",
+            "856fa274-8388-4d1a-84d6-61ddcd56b2dd",
+            "15bd696c-7a8e-4686-8091-a37372ee276d",
+            "9b6d0b97-f24d-4a33-9214-0d6f99a7da46"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 33446,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

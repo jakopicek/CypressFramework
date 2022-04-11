@@ -39,6 +39,28 @@ cy.get('.product-thumb').each(($el, index, $list) =>
     })
 })
 
+Cypress.Commands.add("addProductToCart", (productName) => {
+    cy.get('.product-thumb').each(($el, index, $list) => 
+        {
+            if($el.text().includes(productName))
+            {
+                cy.get('.caption a').eq(index).click()
+                return false
+            }
+        })
+    })
+
+    Cypress.Commands.add("addProductToCartFromSearchResults", (productName) => {
+        cy.get('.product-thumb').each(($el, index, $list) => 
+            {
+                if($el.text().includes(productName))
+                {
+                    cy.get('.button-group button:nth-child(1)').eq(index).click()
+                    return false
+                }
+            })
+        })
+    
 Cypress.Commands.add("getProductsCount", (productName) => {
     var sum=0
     cy.get('.product-thumb').each(($el, index, $list) => 

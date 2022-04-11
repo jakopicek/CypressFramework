@@ -2,5 +2,10 @@
     "firstName": "Agnus",
     "lastName" : "Young",
     "telephone": "+385987654321",
-    "password": "Hav3@nic3Day!"
+    "password": "Hav3@nic3Day!",
+    "address": "Kolodvorska 1",
+    "city" : "Zagreb",
+    "postCode" : "10000",
+    "country": "Croatia",
+    "regionState": "Grad Zagreb"
 }

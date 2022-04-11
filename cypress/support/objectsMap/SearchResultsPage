@@ -1,0 +1,9 @@
+class SearchResultsPage
+{    
+    getSuccessMessage()
+    {
+        return cy.get('.alert')
+    }   
+}
+
+export default SearchResultsPage;
