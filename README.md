@@ -20,5 +20,8 @@ Test run:
 5. Enter: npx cypress open
 
 Troubleshooting:
-In case of error "No version of Cypress is installed in ..." go to folder CypressFramework\node_modules.bin and run: cypress install
+In case of error "No version of Cypress is installed in ..." in Command Prompt go to folder CypressFramework\node_modules.bin and run: cypress install
+Return to CypressFramework folder. Enter:
+  cd..
+  cd..
 Enter: npx cypress open
